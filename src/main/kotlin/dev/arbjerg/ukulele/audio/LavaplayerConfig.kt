@@ -25,17 +25,9 @@ class LavaplayerConfig {
         // Add the new YoutubeAudioSourceManager
         apm.registerSourceManager(YoutubeAudioSourceManager(true))
 
-        // Port the rest from `com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers.registerRemoteSources`
-        // while excluding the legacy `YoutubeAudioSourceManager`
-        apm.registerSourceManager(YandexMusicAudioSourceManager(true))
-        apm.registerSourceManager(SoundCloudAudioSourceManager.createDefault())
-        apm.registerSourceManager(BandcampAudioSourceManager())
-        apm.registerSourceManager(VimeoAudioSourceManager())
-        apm.registerSourceManager(TwitchStreamAudioSourceManager())
-        apm.registerSourceManager(BeamAudioSourceManager())
-        apm.registerSourceManager(GetyarnAudioSourceManager())
-        apm.registerSourceManager(NicoAudioSourceManager())
-        apm.registerSourceManager(HttpAudioSourceManager(MediaContainerRegistry.DEFAULT_REGISTRY))
+        @Suppress("DEPRECATION") val exclusions =
+            arrayOf(com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager::class.java)
+        AudioSourceManagers.registerRemoteSources(apm, *exclusions)
 
         return apm
     }
