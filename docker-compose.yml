@@ -2,6 +2,7 @@ version: "3.7"
 
 services:
   ukulele:
+    container_name: ukulele
     # image: ghcr.io/jocull/ukulele:jda-5
     build: ./
     restart: unless-stopped
