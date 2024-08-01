@@ -42,7 +42,7 @@ class CommandManager(
     fun onMessage(guild: Guild, channel: TextChannel, member: Member, message: Message) {
         GlobalScope.launch {
             val guildProperties = guildProperties.getAwait(guild.idLong)
-            val prefix = guildProperties.prefix ?: botProps.prefix
+            val prefix = System.getenv("PREFIX") ?: guildProperties.prefix ?: botProps.prefix
 
             val name: String
             val trigger: String
