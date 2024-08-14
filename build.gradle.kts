@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.DV8FromTheWorld:JDA:v5.0.0-beta.23")
+    implementation("net.dv8tion:JDA:5.0.0")
     implementation("dev.arbjerg:lavaplayer:2.1.2")
     implementation(":youtube-plugin-1.5.2")
     implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
