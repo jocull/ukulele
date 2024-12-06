@@ -14,11 +14,11 @@ class LavaplayerConfig {
     fun playerManager(): AudioPlayerManager {
         val apm = DefaultAudioPlayerManager()
 
-        // Add the new YoutubeAudioSourceManager
-        apm.registerSourceManager(YoutubeAudioSourceManager(true))
+        val ytDlpAudioSourceManager = YtDlpAudioSourceManager()
+        apm.registerSourceManager(ytDlpAudioSourceManager)
 
         // Then add the rest, while excluding the legacy `YoutubeAudioSourceManager`
-        AudioSourceManagers.registerRemoteSources(apm, MediaContainerRegistry.DEFAULT_REGISTRY, com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager::class.java)
+        // AudioSourceManagers.registerRemoteSources(apm, MediaContainerRegistry.DEFAULT_REGISTRY, com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager::class.java)
 
         return apm
     }
